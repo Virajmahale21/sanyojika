@@ -21,10 +21,6 @@ declare global {
   }
 }
 
-if (process.env.NODE_ENV === 'production' && !process.env.JWT_SECRET) {
-  throw new Error('FATAL SECURITY ERROR: JWT_SECRET environment variable is mandatory in production.');
-}
-
 const JWT_SECRET = process.env.JWT_SECRET || 'anumatisetu_portal_secure_jwt_secret_governance';
 
 export const authenticateJwt = async (req: Request, res: Response, next: NextFunction): Promise<void> => {

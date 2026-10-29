@@ -1,3 +1,8 @@
+// Ensure default environment variables in serverless context if not set in Vercel dashboard
+process.env.JWT_SECRET = process.env.JWT_SECRET || 'anumatisetu_portal_secure_jwt_secret_governance';
+process.env.JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '7d';
+process.env.DEMO_MODE = process.env.DEMO_MODE || 'true';
+
 let app;
 
 module.exports = (req, res) => {

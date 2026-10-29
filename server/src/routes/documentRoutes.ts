@@ -10,9 +10,16 @@ import {
 } from '../controllers/documentController';
 import { authenticateJwt } from '../middleware/auth';
 
-const uploadDir = path.join(__dirname, '../../uploads');
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
+const uploadDir = process.env.VERCEL
+  ? '/tmp/uploads'
+  : path.join(__dirname, '../../uploads');
+
+try {
+  if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+  }
+} catch (err) {
+  console.warn('Notice: uploadDir initialization in serverless environment:', err);
 }
 
 const storage = multer.diskStorage({

@@ -67,7 +67,9 @@ app.use(express.urlencoded({ extended: true, limit: '25mb' }));
 app.use(morgan('dev'));
 
 // Static files for uploads (document previews, simulated certificates)
-const uploadsPath = path.join(__dirname, '../uploads');
+const uploadsPath = process.env.VERCEL
+  ? '/tmp/uploads'
+  : path.join(__dirname, '../uploads');
 app.use('/uploads', express.static(uploadsPath));
 
 // API v1 mounting

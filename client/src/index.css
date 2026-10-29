@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy-primary: #061D45;
+  --navy-nav: #071B3B;
+  --navy-dark: #071735;
+  --blue-gov: #0B4F92;
+  --blue-action: #1565C0;
+  --blue-action-hover: #0D47A1;
+  --white: #FFFFFF;
+  --bg-page: #F5F7FB;
+  --blue-light: #EAF2FB;
+  --border-color: #D9E2EF;
+  --border-light: #E2E8F0;
+  --text-heading: #14243A;
+  --text-body: #475569;
+  --text-muted: #64748B;
+  --saffron-accent: #F4A900;
+  --green-success: #15803D;
+  --green-light: #DCFCE7;
+  --green-border: #86EFAC;
+  --warning-amber: #D97706;
+  --amber-light: #FEF3C7;
+  --amber-border: #FCD34D;
+  --error-red: #DC2626;
+  --red-light: #FEE2E2;
+  --red-border: #FCA5A5;
+}
+
+@layer base {
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-body);
+    font-family: 'Inter', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* PramaanSetu Emblem & Logo Styling */
+.pramaan-logo-svg {
+  filter: drop-shadow(0 1px 2px rgba(6, 29, 69, 0.15));
+}
+
+/* High Contrast Mode for Accessibility */
+body.high-contrast {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  filter: contrast(115%);
+}
+
+body.high-contrast .bg-gov-surface {
+  background-color: #ffffff !important;
+}
+
+body.high-contrast .border-slate-200,
+body.high-contrast .border-gov-border {
+  border-color: #000000 !important;
+}
+
+/* Custom Scrollbar for dense government tables */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}

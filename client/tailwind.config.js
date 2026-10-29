@@ -1,0 +1,50 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        gov: {
+          navy: '#061D45',
+          navyDark: '#071735',
+          navyNav: '#071B3B',
+          sidebar: '#0B1F44',
+          sidebarBorder: '#29466E',
+          sidebarHover: '#193761',
+          sidebarActive: '#2563EB',
+          blue: '#0B4F92',
+          blueAction: '#1565C0',
+          blueActionHover: '#0D47A1',
+          blueLight: '#EAF2FB',
+          saffron: '#F4A900',
+          saffronDark: '#D97706',
+          saffronLight: '#FEF3C7',
+          green: '#15803D',
+          greenLight: '#DCFCE7',
+          greenBorder: '#86EFAC',
+          amber: '#D97706',
+          amberLight: '#FEF3C7',
+          amberBorder: '#FCD34D',
+          red: '#DC2626',
+          redLight: '#FEE2E2',
+          redBorder: '#FCA5A5',
+          surface: '#F5F7FB',
+          border: '#D9E2EF',
+          borderLight: '#E2E8F0',
+          textHeading: '#14243A',
+          textBody: '#475569',
+          textMuted: '#64748B',
+        },
+      },
+      fontFamily: {
+        sans: ['Inter', 'Noto Sans Devanagari', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+      },
+      boxShadow: {
+        'gov-xs': '0 1px 2px #061d450a',
+        'gov-sm': '0 1px 3px #061d4514, 0 1px 2px #061d450a',
+        'gov-md': '0 4px 6px -1px #061d4514, 0 2px 4px -2px #061d4514',
+      },
+    },
+  },
+  plugins: [],
+};

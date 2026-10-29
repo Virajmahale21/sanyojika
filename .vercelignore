@@ -1,0 +1,28 @@
+# Large media files (demonstration videos and audio persisted in brain artifacts)
+*.mp4
+*.wav
+*.mp3
+*.docx
+video_build_anumatisetu/
+video_frames_test/
+test_*.mp3
+test_*.png
+step*.py
+build_*.py
+generate_*.py
+
+# Secrets and local environment
+.env
+.env.local
+.env.*.local
+server/.env
+
+# Node and dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Git and OS
+.git/
+.DS_Store
+Thumbs.db

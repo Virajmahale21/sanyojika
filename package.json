@@ -10,7 +10,7 @@
     "dev": "concurrently -k -p \"[{name}]\" -n \"SERVER,CLIENT\" -c \"blue.bold,green.bold\" \"npm run dev:server\" \"npm run dev:client\"",
     "dev:server": "cd server && npm run dev",
     "dev:client": "cd client && npm run dev",
-    "build": "cd server && npm run build && cd ../client && npm run build",
+    "build": "npx prisma generate && cd server && npm run build && cd ../client && npm run build",
     "test": "cd server && npm test"
   },
   "dependencies": {

@@ -1,0 +1,384 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-3.0.x", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String           @id @default(uuid())
+  email           String           @unique
+  passwordHash    String
+  fullName        String
+  designation     String?
+  phone           String?
+  role            String           // SUPER_ADMIN, CENTRAL_ADMIN, BUREAU_OFFICER, REGIONAL_OFFICER, EVC_MEMBER, INSTITUTION_ADMIN, AUDITOR
+  departmentId    String?
+  regionId        String?
+  institutionId   String?
+  preferredLang   String           @default("en") // en, hi, mr
+  isActive        Boolean          @default(true)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+
+  department      Department?      @relation(fields: [departmentId], references: [id])
+  region          Region?          @relation(fields: [regionId], references: [id])
+  institution     Institution?     @relation(fields: [institutionId], references: [id])
+  
+  assignedApps    Application[]    @relation("AssignedOfficer")
+  assignedTasks   Task[]           @relation("AssignedUser")
+  inspections     InspectionMember[]
+  notifications   Notification[]
+  auditLogs       AuditLog[]
+}
+
+model Department {
+  id          String   @id @default(uuid())
+  code        String   @unique // ENGG, MGMT, PHARM, ARCH, APPLIED_ARTS
+  name        String
+  nameHi      String?
+  nameMr      String?
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  users       User[]
+  tasks       Task[]
+}
+
+model Region {
+  id          String   @id @default(uuid())
+  code        String   @unique // WRO (Western), NRO (Northern), SRO (Southern), CRO (Central), ERO (Eastern), SWRO (South-Western), NWRO (North-Western)
+  name        String
+  nameHi      String?
+  nameMr      String?
+  statesCovered String // e.g., "Maharashtra, Goa"
+  officeAddress String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  users       User[]
+  institutions Institution[]
+}
+
+model Institution {
+  id                String   @id @default(uuid())
+  permanentId       String   @unique // AICTE PID e.g., "1-3324567891"
+  name              String
+  nameHi            String?
+  nameMr            String?
+  category          String   // ENGINEERING, MANAGEMENT, PHARMACY, ARCHITECTURE, POLYTECHNIC
+  institutionType   String   // GOVT, GOVT_AIDED, PRIVATE_UNAIDED, DEEMED_UNIVERSITY
+  establishmentYear Int
+  affiliatingUniv   String
+  naacAccreditation String?  // A++, A+, A, B++, B, NA
+  nbaAccredited     Boolean  @default(false)
+  address           String
+  city              String
+  state             String
+  pinCode           String
+  regionId          String
+  website           String?
+  officialEmail     String
+  contactNumber     String
+  principalName     String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  region            Region   @relation(fields: [regionId], references: [id])
+  users             User[]
+  applications      Application[]
+  documents         Document[]
+  inspections       Inspection[]
+  complianceRecords ComplianceSubmission[]
+}
+
+model Application {
+  id              String      @id @default(uuid())
+  applicationNumber String    @unique // e.g. "AICTE/2026-27/APP-1002"
+  institutionId   String
+  applicationType String      // EOA (Extension of Approval), NEW_CAMPUS, INTAKE_INCREASE, NEW_COURSE
+  academicYear    String      // "2026-2027"
+  status          String      // DRAFT, SUBMITTED, INITIAL_VALIDATION, UNDER_SCRUTINY, DOCUMENTS_REQUIRED, DEPARTMENTAL_REVIEW, INSPECTION_SCHEDULED, INSPECTION_COMPLETED, COMMITTEE_REVIEW, APPROVED, REJECTED, WITHDRAWN
+  currentStageCode String     // e.g. "STAGE_SCRUTINY"
+  assignedOfficerId String?
+  submissionDate  DateTime?
+  targetDueDate   DateTime?
+  decisionDate    DateTime?
+  overallRemarks  String?
+  delayRiskScore  Int         @default(15) // 0-100 rule-based risk score
+  delayRiskLevel  String      @default("LOW") // LOW, MEDIUM, HIGH, CRITICAL
+  delayRiskReasons String?    // JSON array string of risk triggers
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  institution     Institution @relation(fields: [institutionId], references: [id])
+  assignedOfficer User?       @relation("AssignedOfficer", fields: [assignedOfficerId], references: [id])
+  courses         ApplicationCourse[]
+  documents       Document[]
+  inspections     Inspection[]
+  tasks           Task[]
+  escalationEvents EscalationEvent[]
+}
+
+model ApplicationCourse {
+  id              String      @id @default(uuid())
+  applicationId   String
+  program         String      // ENGINEERING_AND_TECHNOLOGY, MANAGEMENT, PHARMACY
+  courseName      String      // e.g. Computer Science and Engineering
+  level           String      // UG, PG, DIPLOMA
+  durationYears   Int         @default(4)
+  existingIntake  Int         @default(0)
+  proposedIntake  Int
+  approvedIntake  Int?
+  facultyCount    Int         @default(0)
+  nbaAccredited   Boolean     @default(false)
+
+  application     Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+}
+
+model WorkflowTemplate {
+  id          String   @id @default(uuid())
+  name        String
+  code        String   @unique // APH_STANDARD_EOA, APH_NEW_CAMPUS
+  description String?
+  version     Int      @default(1)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  stages      WorkflowStage[]
+}
+
+model WorkflowStage {
+  id                 String   @id @default(uuid())
+  templateId         String
+  code               String   // STAGE_SUBMISSION, STAGE_VALIDATION, STAGE_SCRUTINY, STAGE_EVC, STAGE_COMMITTEE, STAGE_APPROVAL
+  name               String
+  nameHi             String?
+  nameMr             String?
+  sequenceOrder      Int
+  slaDays            Int      @default(7)
+  allowedRoles       String   // Comma-separated: "BUREAU_OFFICER,CENTRAL_ADMIN"
+  requiredDocTypes   String?  // Comma-separated doc categories
+  description        String?
+
+  template           WorkflowTemplate @relation(fields: [templateId], references: [id], onDelete: Cascade)
+}
+
+model Document {
+  id               String       @id @default(uuid())
+  applicationId    String?
+  institutionId    String
+  category         String       // FIRE_NOC, LAND_TITLE, BUILDING_PLAN, AICTE_PREV_APPROVAL, SOCIETY_REGISTRATION, AUDITED_FINANCIALS, FACULTY_CADRE
+  title            String
+  fileName         String
+  filePath         String
+  fileSize         Int
+  mimeType         String
+  version          Int          @default(1)
+  status           String       @default("PENDING") // PENDING, VERIFIED, REJECTED, CLARIFICATION_NEEDED, EXPIRED
+  issueDate        DateTime?
+  expiryDate       DateTime?
+  isMandatory      Boolean      @default(true)
+  reviewedById     String?
+  reviewedAt       DateTime?
+  reviewRemarks    String?
+  uploadedAt       DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+
+  application      Application? @relation(fields: [applicationId], references: [id])
+  institution      Institution  @relation(fields: [institutionId], references: [id])
+  ocrData          DocumentOcrData?
+}
+
+model DocumentOcrData {
+  id                  String   @id @default(uuid())
+  documentId          String   @unique
+  extractedDocNumber  String?
+  extractedIssueDate  DateTime?
+  extractedExpiryDate DateTime?
+  extractedAuthority  String?
+  confidenceScore     Float    @default(0.92)
+  isConfirmed         Boolean  @default(false)
+  rawExtractedJson    String?
+  createdAt           DateTime @default(now())
+
+  document            Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+}
+
+model Inspection {
+  id               String   @id @default(uuid())
+  inspectionNumber String   @unique // e.g. "EVC-2026-0042"
+  applicationId    String
+  institutionId    String
+  inspectionType   String   // PHYSICAL, VIRTUAL, SURPRISE
+  scheduledDate    DateTime
+  status           String   @default("SCHEDULED") // SCHEDULED, IN_PROGRESS, COMPLETED, CANCELLED
+  recommendation   String?  // RECOMMENDED, NOT_RECOMMENDED, CONDITIONAL
+  summaryReport    String?
+  geotagLat        Float?
+  geotagLng        Float?
+  completedAt      DateTime?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  application      Application @relation(fields: [applicationId], references: [id])
+  institution      Institution @relation(fields: [institutionId], references: [id])
+  committeeMembers InspectionMember[]
+  checklists       InspectionChecklist[]
+}
+
+model InspectionMember {
+  id             String     @id @default(uuid())
+  inspectionId   String
+  userId         String
+  roleInCommittee String    // CHAIRMAN, MEMBER_SECRETARY, SUBJECT_EXPERT
+  assignedAt     DateTime   @default(now())
+
+  inspection     Inspection @relation(fields: [inspectionId], references: [id], onDelete: Cascade)
+  user           User       @relation(fields: [userId], references: [id])
+}
+
+model InspectionChecklist {
+  id           String     @id @default(uuid())
+  inspectionId String
+  sectionName  String     // INFRASTRUCTURE, FACULTY_VERIFICATION, LAB_EQUIPMENT, SAFETY_AND_BARRIER_FREE
+  itemName     String
+  isCompliant  Boolean    @default(true)
+  score        Int        @default(10) // out of 10
+  remarks      String?
+
+  inspection   Inspection @relation(fields: [inspectionId], references: [id], onDelete: Cascade)
+}
+
+model ComplianceRequirement {
+  id                 String   @id @default(uuid())
+  code               String   @unique // COMP_ANTI_RAGGING, COMP_GRIEVANCE, COMP_ICC, COMP_FACULTY_RATIO, COMP_BIOMETRIC, COMP_FIRE_NOC
+  title              String
+  titleHi            String?
+  titleMr            String?
+  category           String   // STATUTORY, ACADEMIC, SAFETY, GOVERNANCE
+  description        String
+  mandatoryFor       String   // ALL, TECHNICAL, MANAGEMENT
+  frequency          String   // ANNUAL, BIANNUAL, ONCE
+  evidenceRequired   String
+  penaltyDescription String?
+  isActive           Boolean  @default(true)
+
+  submissions        ComplianceSubmission[]
+}
+
+model ComplianceSubmission {
+  id             String   @id @default(uuid())
+  institutionId  String
+  requirementId  String
+  academicYear   String   // "2026-2027"
+  status         String   @default("PENDING_EVIDENCE") // COMPLIANT, PENDING_EVIDENCE, UNDER_REVIEW, NON_COMPLIANT, OVERDUE
+  dueDate        DateTime
+  submittedDate  DateTime?
+  verifiedAt     DateTime?
+  verifiedById   String?
+  evidenceDocUrl String?
+  remarks        String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  institution    Institution           @relation(fields: [institutionId], references: [id])
+  requirement    ComplianceRequirement @relation(fields: [requirementId], references: [id])
+}
+
+model Task {
+  id                String    @id @default(uuid())
+  title             String
+  titleHi           String?
+  titleMr           String?
+  description       String?
+  relatedEntityType String    // APPLICATION, INSPECTION, COMPLIANCE, DOCUMENT
+  relatedEntityId   String
+  assignedToUserId  String?
+  departmentId      String?
+  status            String    @default("PENDING") // PENDING, IN_PROGRESS, COMPLETED, ESCALATED
+  priority          String    @default("MEDIUM")  // LOW, MEDIUM, HIGH, CRITICAL
+  dueDate           DateTime
+  escalationLevel   Int       @default(0)         // 0 = Normal, 1 = Officer Alert, 2 = Regional Head, 3 = Central AICTE HQ
+  completedAt       DateTime?
+  applicationId     String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  assignedTo        User?        @relation("AssignedUser", fields: [assignedToUserId], references: [id])
+  department        Department?  @relation(fields: [departmentId], references: [id])
+  application       Application? @relation(fields: [applicationId], references: [id])
+  escalationEvents  EscalationEvent[]
+}
+
+model EscalationRule {
+  id                 String   @id @default(uuid())
+  name               String
+  triggerDaysOverdue Int      // e.g. 3 days, 7 days, 14 days
+  escalationLevel    Int      // 1, 2, 3
+  notifyRole         String   // BUREAU_OFFICER, REGIONAL_OFFICER, CENTRAL_ADMIN
+  actionRequired     String   // "REVIEW_URGENT", "DIRECTOR_INTERVENTION", "MEMBER_SECRETARY_NOTICE"
+  isActive           Boolean  @default(true)
+}
+
+model EscalationEvent {
+  id               String   @id @default(uuid())
+  taskId           String
+  applicationId    String?
+  triggeredLevel   Int
+  escalatedToRole  String
+  escalatedToUserId String?
+  reason           String
+  createdAt        DateTime @default(now())
+
+  task             Task         @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  application      Application? @relation(fields: [applicationId], references: [id])
+}
+
+model Notification {
+  id          String   @id @default(uuid())
+  userId      String
+  title       String
+  titleHi     String?
+  titleMr     String?
+  message     String
+  messageHi   String?
+  messageMr   String?
+  type        String   // APPLICATION_STATUS, DOCUMENT_DEFICIENCY, INSPECTION_SCHEDULED, ESCALATION_ALERT, COMPLIANCE_DEADLINE
+  priority    String   @default("NORMAL") // LOW, NORMAL, HIGH, URGENT
+  isRead      Boolean  @default(false)
+  actionUrl   String?
+  createdAt   DateTime @default(now())
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model AuditLog {
+  id           String   @id @default(uuid())
+  userId       String?
+  userRole     String?
+  userEmail    String?
+  action       String   // CREATE, SUBMIT, ADVANCE_STAGE, REQUEST_DEFICIENCY, VERIFY_DOC, SCHEDULE_INSPECTION, APPROVE, REJECT, ESCALATE
+  entityType   String   // APPLICATION, DOCUMENT, INSPECTION, COMPLIANCE, USER, SETTING
+  entityId     String
+  description  String
+  oldState     String?  // JSON string
+  newState     String?  // JSON string
+  ipAddress    String?  @default("127.0.0.1")
+  createdAt    DateTime @default(now())
+
+  user         User?    @relation(fields: [userId], references: [id])
+}
+
+model SystemSetting {
+  id          String   @id @default(uuid())
+  key         String   @unique
+  value       String
+  description String?
+  updatedAt   DateTime @updatedAt
+}

@@ -3,8 +3,8 @@
   "buildCommand": "npm run build",
   "outputDirectory": "client/dist",
   "functions": {
-    "api/**/*.ts": {
-      "includeFiles": "server/prisma/**"
+    "api/**": {
+      "includeFiles": "{prisma/**,server/prisma/**}"
     }
   },
   "rewrites": [

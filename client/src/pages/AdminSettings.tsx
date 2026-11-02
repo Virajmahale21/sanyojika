@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { api } from '../services/api';
 import { Card } from '../components/ui/Card';
+import { AnumatiSetuLogo } from '../components/layout/AnumatiSetuLogo';
 import { Settings, Users, RotateCcw, ShieldAlert, CheckCircle2, RefreshCw } from 'lucide-react';
 
 export const AdminSettings: React.FC = () => {
@@ -54,15 +55,23 @@ export const AdminSettings: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Title */}
-      <div className="border-b border-slate-200 pb-4">
-        <h1 className="text-xl font-bold text-gov-navy flex items-center">
-          <Settings className="w-5 h-5 mr-2 text-gov-blue" />
-          <span>{t('admin.title')}</span>
-        </h1>
-        <p className="text-xs text-slate-500 mt-0.5">
-          {t('admin.subtitle')}
-        </p>
+      {/* Title & Portal Identity Banner */}
+      <div className="bg-white border border-gov-border rounded-lg p-4 shadow-gov-xs flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex items-center space-x-4">
+          <AnumatiSetuLogo width={180} className="h-10 md:h-12 w-auto object-contain flex-shrink-0" />
+          <div className="border-l border-slate-200 pl-4 hidden sm:block">
+            <h1 className="text-sm md:text-base font-bold text-gov-navy flex items-center">
+              <Settings className="w-4 h-4 mr-2 text-gov-blue" />
+              <span>{t('admin.title')}</span>
+            </h1>
+            <p className="text-xs text-slate-500 mt-0.5">
+              {t('admin.subtitle')}
+            </p>
+          </div>
+        </div>
+        <span className="text-[10px] font-bold text-red-800 bg-red-100 border border-red-300 px-3 py-1 rounded-full uppercase tracking-wider">
+          SUPER ADMIN CONSOLE
+        </span>
       </div>
 
       {feedback && (

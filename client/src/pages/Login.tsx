@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
 import { useTranslation } from 'react-i18next';
-import { AnumatiLogo, AnumatiBrand } from '../components/layout/AnumatiLogo';
+import { AnumatiSetuLogo } from '../components/layout/AnumatiSetuLogo';
 import {
   Lock,
   Mail,
@@ -272,13 +272,10 @@ export const Login: React.FC = () => {
 
       {/* 2. Brand Header with Back to Home Link */}
       <header className="bg-white border-b border-gov-border shadow-gov-xs sticky top-0 z-20">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 py-3.5 flex items-center justify-between">
-          <AnumatiBrand
-            size={42}
-            titlePrimary="Anumati"
-            titleAccent="Setu"
-            subtitle={t('portalSubtitle')}
-          />
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
+          <Link to="/" className="flex items-center hover:opacity-95 transition" title="AnumatiSetu">
+            <AnumatiSetuLogo width={220} className="h-11 md:h-12 w-auto object-contain" />
+          </Link>
 
           <div className="flex items-center space-x-3">
             <Link
@@ -294,8 +291,11 @@ export const Login: React.FC = () => {
 
       {/* 3. Main Portal Authentication Container */}
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 md:px-8 py-8">
-        {/* Section Heading */}
+        {/* Section Heading with Multilingual Official Logo */}
         <div className="text-center max-w-2xl mx-auto mb-8">
+          <div className="flex justify-center mb-4">
+            <AnumatiSetuLogo width={280} className="h-16 md:h-20 w-auto object-contain" />
+          </div>
           <span className="text-[11px] font-bold uppercase tracking-widest text-gov-blue bg-gov-blueLight border border-gov-border px-3 py-1 rounded-full inline-block mb-2">
             {t('login.gatewayBadge')}
           </span>

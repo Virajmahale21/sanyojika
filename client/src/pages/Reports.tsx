@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { api } from '../services/api';
 import { Card } from '../components/ui/Card';
+import { AnumatiSetuLogo } from '../components/layout/AnumatiSetuLogo';
 import { Download, Printer, BarChart3, Clock, CheckCircle2, RefreshCw } from 'lucide-react';
 
 export const Reports: React.FC = () => {
@@ -46,13 +47,18 @@ export const Reports: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Title & Actions */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-200 pb-4">
-        <div>
-          <h1 className="text-xl font-bold text-gov-navy">{t('reports.title')}</h1>
-          <p className="text-xs text-slate-500 mt-0.5">
-            {t('reports.subtitle')}
-          </p>
+      {/* Printable Official Statutory Header */}
+      <div className="bg-white border border-gov-border rounded-lg p-4 shadow-gov-xs flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex items-center space-x-4">
+          <AnumatiSetuLogo width={180} className="h-10 md:h-12 w-auto object-contain flex-shrink-0" />
+          <div className="border-l border-slate-200 pl-4 hidden sm:block">
+            <h2 className="text-sm font-bold text-gov-navy uppercase tracking-wide">
+              {t('reports.title')}
+            </h2>
+            <p className="text-xs text-slate-500">
+              {t('reports.subtitle')}
+            </p>
+          </div>
         </div>
 
         <div className="flex items-center space-x-2">

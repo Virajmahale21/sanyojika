@@ -6,6 +6,7 @@ import { api } from '../services/api';
 import { Application } from '../types';
 import { Card } from '../components/ui/Card';
 import { StatusBadge } from '../components/ui/Badge';
+import { AnumatiSetuLogo } from '../components/layout/AnumatiSetuLogo';
 import { Search, Plus, Filter, AlertTriangle, ArrowRight, RefreshCw } from 'lucide-react';
 
 export const ApplicationsList: React.FC = () => {
@@ -66,11 +67,14 @@ export const ApplicationsList: React.FC = () => {
     <div className="space-y-5">
       {/* Header and New Application Button */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-200 pb-4">
-        <div>
-          <h1 className="text-xl font-bold text-gov-navy">{t('applications.title')}</h1>
-          <p className="text-xs text-slate-500 mt-0.5">
-            {t('applications.subtitle')}
-          </p>
+        <div className="flex items-center space-x-3">
+          <AnumatiSetuLogo width={150} className="hidden sm:block shrink-0" />
+          <div>
+            <h1 className="text-xl font-bold text-gov-navy">{t('applications.title')}</h1>
+            <p className="text-xs text-slate-500 mt-0.5">
+              {t('applications.subtitle')}
+            </p>
+          </div>
         </div>
 
         {user?.role === 'INSTITUTION_ADMIN' && (

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { api } from '../services/api';
 import { Card } from '../components/ui/Card';
+import { AnumatiSetuLogo } from '../components/layout/AnumatiSetuLogo';
 import { Building2, Plus, Trash2, ArrowRight, ArrowLeft, CheckCircle2, ShieldCheck } from 'lucide-react';
 
 export const NewApplication: React.FC = () => {
@@ -84,12 +85,20 @@ export const NewApplication: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
-      {/* Title */}
-      <div className="border-b border-slate-200 pb-4">
-        <h1 className="text-xl font-bold text-gov-navy">{t('newApplication.title')}</h1>
-        <p className="text-xs text-slate-500 mt-0.5">
-          {t('newApplication.subtitle')}
-        </p>
+      {/* Wizard Header Banner */}
+      <div className="bg-white border border-gov-border rounded-lg p-3.5 shadow-gov-xs flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="flex items-center space-x-3.5">
+          <AnumatiSetuLogo width={165} className="h-9 md:h-11 w-auto object-contain flex-shrink-0" />
+          <div className="border-l border-slate-200 pl-3.5 hidden sm:block">
+            <h1 className="text-sm font-bold text-gov-navy">{t('newApplication.title')}</h1>
+            <p className="text-[11px] text-slate-500 mt-0.5">
+              {t('newApplication.subtitle')}
+            </p>
+          </div>
+        </div>
+        <span className="text-[10px] font-bold text-gov-blue bg-gov-blueLight border border-gov-border px-2.5 py-1 rounded-full uppercase tracking-wider">
+          {t('newApplication.stepBadge') || 'STATUTORY FILING WIZARD'}
+        </span>
       </div>
 
       {error && (

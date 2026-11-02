@@ -6,6 +6,7 @@ import { DocumentItem } from '../types';
 import { Card } from '../components/ui/Card';
 import { StatusBadge } from '../components/ui/Badge';
 import { Modal } from '../components/ui/Modal';
+import { AnumatiSetuLogo } from '../components/layout/AnumatiSetuLogo';
 import {
   FolderLock,
   Upload,
@@ -134,13 +135,16 @@ export const DocumentsList: React.FC = () => {
 
   return (
     <div className="space-y-5">
-      {/* Page Title & Upload Button */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-200 pb-4">
-        <div>
-          <h1 className="text-xl font-bold text-gov-navy">{t('documents.title')}</h1>
-          <p className="text-xs text-slate-500 mt-0.5">
-            {t('documents.subtitle')}
-          </p>
+      {/* Official Document Repository Header */}
+      <div className="bg-white border border-gov-border rounded-lg p-3.5 shadow-gov-xs flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="flex items-center space-x-3.5">
+          <AnumatiSetuLogo width={165} className="h-9 md:h-11 w-auto object-contain flex-shrink-0" />
+          <div className="border-l border-slate-200 pl-3.5 hidden sm:block">
+            <h1 className="text-sm font-bold text-gov-navy">{t('documents.title')}</h1>
+            <p className="text-[11px] text-slate-500 mt-0.5">
+              {t('documents.subtitle')}
+            </p>
+          </div>
         </div>
 
         <button

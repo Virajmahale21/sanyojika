@@ -7,6 +7,7 @@ import { Application, DocumentItem } from '../types';
 import { Card } from '../components/ui/Card';
 import { StatusBadge } from '../components/ui/Badge';
 import { Modal } from '../components/ui/Modal';
+import { AnumatiSetuLogo } from '../components/layout/AnumatiSetuLogo';
 import {
   FileText,
   Building2,
@@ -179,22 +180,25 @@ export const ApplicationDetail: React.FC = () => {
       {/* Application Master Header Card */}
       <div className="bg-white border border-slate-200 rounded p-6 shadow-sm">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-4">
-          <div>
-            <div className="flex items-center space-x-2">
-              <span className="text-xs font-bold text-gov-blue bg-blue-50 px-2.5 py-0.5 rounded border border-blue-200">
-                {application.applicationType}
-              </span>
-              <span className="text-xs text-slate-500">• AY {application.academicYear}</span>
+          <div className="flex items-start space-x-3.5">
+            <AnumatiSetuLogo width={140} className="hidden lg:block shrink-0 pt-1" />
+            <div>
+              <div className="flex items-center space-x-2">
+                <span className="text-xs font-bold text-gov-blue bg-blue-50 px-2.5 py-0.5 rounded border border-blue-200">
+                  {application.applicationType}
+                </span>
+                <span className="text-xs text-slate-500">• AY {application.academicYear}</span>
+              </div>
+              <h1 className="text-xl font-bold text-gov-navy mt-1 font-mono">{application.applicationNumber}</h1>
+              <p className="text-xs text-slate-600 mt-0.5 flex items-center">
+                <Building2 className="w-3.5 h-3.5 mr-1 text-slate-400" />
+                <span className="font-semibold">{application.institution.name}</span>
+                <span className="mx-1.5">•</span>
+                <span>PID: {application.institution.permanentId}</span>
+                <span className="mx-1.5">•</span>
+                <span>Region: {application.institution.region?.name || 'Western Region'}</span>
+              </p>
             </div>
-            <h1 className="text-xl font-bold text-gov-navy mt-1 font-mono">{application.applicationNumber}</h1>
-            <p className="text-xs text-slate-600 mt-0.5 flex items-center">
-              <Building2 className="w-3.5 h-3.5 mr-1 text-slate-400" />
-              <span className="font-semibold">{application.institution.name}</span>
-              <span className="mx-1.5">•</span>
-              <span>PID: {application.institution.permanentId}</span>
-              <span className="mx-1.5">•</span>
-              <span>Region: {application.institution.region?.name || 'Western Region'}</span>
-            </p>
           </div>
 
           <div className="flex flex-col md:items-end space-y-2">

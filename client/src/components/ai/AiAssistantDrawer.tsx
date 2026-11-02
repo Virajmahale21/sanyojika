@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
+import { AnumatiSetuLogo } from '../layout/AnumatiSetuLogo';
 import { api } from '../../services/api';
 import { X, Send, Sparkles, BookOpen, ExternalLink, Bot, User } from 'lucide-react';
 
@@ -94,11 +95,14 @@ export const AiAssistantDrawer: React.FC<AiAssistantDrawerProps> = ({ isOpen, on
           {/* Header */}
           <div className="p-4 bg-gov-navy text-white flex items-center justify-between">
             <div className="flex items-center space-x-2.5">
-              <div className="w-8 h-8 rounded-full bg-gov-blue flex items-center justify-center border border-amber-300">
-                <Sparkles className="w-4 h-4 text-amber-300" />
+              <div className="bg-white/95 rounded p-1 shadow-sm flex items-center justify-center">
+                <AnumatiSetuLogo width={100} className="h-6 w-auto object-contain" />
               </div>
               <div>
-                <h3 className="text-sm font-bold">{t('aiAssistant.title')}</h3>
+                <h3 className="text-sm font-bold flex items-center space-x-1">
+                  <span>{t('aiAssistant.title')}</span>
+                  <Sparkles className="w-3.5 h-3.5 text-amber-300 inline" />
+                </h3>
                 <p className="text-[10px] text-amber-200">{t('aiAssistant.subtitle')}</p>
               </div>
             </div>

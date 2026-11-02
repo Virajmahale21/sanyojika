@@ -4,6 +4,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { api } from '../services/api';
 import { Institution } from '../types';
 import { Card } from '../components/ui/Card';
+import { AnumatiSetuLogo } from '../components/layout/AnumatiSetuLogo';
 import { Building2, Search, RefreshCw, CheckCircle2 } from 'lucide-react';
 
 export const InstitutionsList: React.FC = () => {
@@ -40,11 +41,14 @@ export const InstitutionsList: React.FC = () => {
   return (
     <div className="space-y-5">
       {/* Title */}
-      <div className="border-b border-slate-200 pb-4">
-        <h1 className="text-xl font-bold text-gov-navy">{t('institutions.title')}</h1>
-        <p className="text-xs text-slate-500 mt-0.5">
-          {t('institutions.subtitle')}
-        </p>
+      <div className="flex items-center space-x-3.5 border-b border-slate-200 pb-4">
+        <AnumatiSetuLogo width={150} className="hidden sm:block shrink-0" />
+        <div>
+          <h1 className="text-xl font-bold text-gov-navy">{t('institutions.title')}</h1>
+          <p className="text-xs text-slate-500 mt-0.5">
+            {t('institutions.subtitle')}
+          </p>
+        </div>
       </div>
 
       {/* Filter Card */}

@@ -6,6 +6,7 @@ import { ComplianceSubmission } from '../types';
 import { Card } from '../components/ui/Card';
 import { StatusBadge } from '../components/ui/Badge';
 import { Modal } from '../components/ui/Modal';
+import { AnumatiSetuLogo } from '../components/layout/AnumatiSetuLogo';
 import {
   ShieldAlert,
   CheckCircle2,
@@ -102,11 +103,14 @@ export const ComplianceList: React.FC = () => {
     <div className="space-y-5">
       {/* Page Title */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-200 pb-4">
-        <div>
-          <h1 className="text-xl font-bold text-gov-navy">{t('compliance.title')}</h1>
-          <p className="text-xs text-slate-500 mt-0.5">
-            {t('compliance.subtitle')}
-          </p>
+        <div className="flex items-center space-x-3">
+          <AnumatiSetuLogo width={150} className="hidden sm:block shrink-0" />
+          <div>
+            <h1 className="text-xl font-bold text-gov-navy">{t('compliance.title')}</h1>
+            <p className="text-xs text-slate-500 mt-0.5">
+              {t('compliance.subtitle')}
+            </p>
+          </div>
         </div>
       </div>
 

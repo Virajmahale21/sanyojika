@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { api } from '../services/api';
 import { Card } from '../components/ui/Card';
 import { StatusBadge } from '../components/ui/Badge';
+import { AnumatiSetuLogo } from '../components/layout/AnumatiSetuLogo';
 import {
   FileText,
   Clock,
@@ -76,6 +77,33 @@ export const Dashboard: React.FC = () => {
 
   return (
     <div className="space-y-6">
+      {/* Official Portal Branding Banner */}
+      <div className="bg-white border border-gov-border rounded-lg p-3.5 shadow-gov-xs flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="flex items-center space-x-3.5">
+          <AnumatiSetuLogo width={180} className="h-10 md:h-12 w-auto object-contain flex-shrink-0" />
+          <div className="border-l border-slate-200 pl-3.5 hidden sm:block">
+            <div className="text-[11px] font-bold text-gov-navy tracking-wide uppercase">
+              {t('ministry')}
+            </div>
+            <div className="text-xs text-slate-500 font-medium">
+              {t('portalSubtitle')}
+            </div>
+          </div>
+        </div>
+        <div className="flex items-center space-x-2">
+          <span className="text-[10px] font-bold text-gov-blue bg-gov-blueLight border border-gov-border px-2.5 py-1 rounded-full uppercase tracking-wider">
+            {user?.role ? t(`roles.${user.role}`) || user.role : 'NATIONAL WORKSPACE'}
+          </span>
+          <button
+            onClick={fetchMetrics}
+            className="flex items-center space-x-1.5 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 px-3 py-1.5 rounded text-xs font-medium transition shadow-sm"
+          >
+            <RefreshCw className="w-3.5 h-3.5" />
+            <span>{t('dashboard.refreshIntelligence') || t('actions.refresh')}</span>
+          </button>
+        </div>
+      </div>
+
       {/* Page Title & User Banner */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-200 pb-4">
         <div>

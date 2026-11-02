@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { useNotifications } from '../../context/NotificationContext';
+import { AnumatiSetuLogo } from './AnumatiSetuLogo';
 import {
   Bell,
   Globe,
@@ -178,7 +179,7 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* 2. Main Gov Portal Header Bar */}
       <div className="bg-white border-b border-gov-border px-4 md:px-6 py-2.5 flex items-center justify-between">
-        {/* Left Side: Mobile Toggle & Portal Subtitle */}
+        {/* Left Side: Mobile Toggle, Multilingual Logo & Portal Subtitle */}
         <div className="flex items-center space-x-3">
           {onToggleSidebar && (
             <button
@@ -192,7 +193,11 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           )}
 
-          <div className="hidden sm:flex items-center space-x-2 text-xs">
+          <Link to="/dashboard" className="flex items-center hover:opacity-90 transition mr-1" title="AnumatiSetu Portal">
+            <AnumatiSetuLogo width={165} className="h-8 md:h-10 w-auto object-contain" />
+          </Link>
+
+          <div className="hidden lg:flex items-center space-x-2 text-xs border-l border-slate-200 pl-3">
             <Link to="/dashboard" className="font-bold text-gov-navy hover:text-gov-blue tracking-tight">
               {t('navExtra.portalHeading')}
             </Link>
@@ -200,7 +205,7 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="text-gov-blue font-semibold">{getRoleDisplayName(user?.role)}</span>
             <Link
               to="/"
-              className="text-[11px] text-slate-500 hover:text-gov-blue hidden md:inline-flex items-center space-x-1 pl-2 border-l border-slate-200"
+              className="text-[11px] text-slate-500 hover:text-gov-blue hidden xl:inline-flex items-center space-x-1 pl-2 border-l border-slate-200"
               title={t('navExtra.publicOverview')}
             >
               <span>{t('navExtra.publicOverview')}</span>

@@ -7,6 +7,7 @@ import { NotificationProvider, useNotifications } from './context/NotificationCo
 
 import { Header } from './components/layout/Header';
 import { Sidebar } from './components/layout/Sidebar';
+import { AnumatiSetuLogo } from './components/layout/AnumatiSetuLogo';
 import { Breadcrumbs } from './components/layout/Breadcrumbs';
 import { Footer } from './components/layout/Footer';
 import { NotificationDrawer } from './components/layout/NotificationDrawer';
@@ -79,8 +80,12 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-xs text-slate-500">
-        {t('appLoading')}
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gov-surface p-6 space-y-4">
+        <AnumatiSetuLogo width={220} className="h-14 w-auto object-contain animate-pulse" />
+        <div className="flex items-center space-x-2 text-xs text-slate-500 font-medium">
+          <div className="w-3.5 h-3.5 border-2 border-gov-blue border-t-transparent rounded-full animate-spin" />
+          <span>{t('appLoading')}</span>
+        </div>
       </div>
     );
   }

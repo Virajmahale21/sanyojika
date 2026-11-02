@@ -50,3 +50,4 @@ Thumbs.db
 *.swo
 
 .vercel
+.env*

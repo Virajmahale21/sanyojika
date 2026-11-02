@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { api } from '../services/api';
 import { AuditLogItem } from '../types';
 import { Card } from '../components/ui/Card';
+import { AnumatiSetuLogo } from '../components/layout/AnumatiSetuLogo';
 import { History, Shield, Filter, RefreshCw } from 'lucide-react';
 
 export const AuditLogs: React.FC = () => {
@@ -36,14 +37,17 @@ export const AuditLogs: React.FC = () => {
   return (
     <div className="space-y-5">
       {/* Title */}
-      <div className="border-b border-slate-200 pb-4">
-        <h1 className="text-xl font-bold text-gov-navy flex items-center">
-          <Shield className="w-5 h-5 mr-2 text-gov-blue" />
-          <span>{t('auditLogs.title')}</span>
-        </h1>
-        <p className="text-xs text-slate-500 mt-0.5">
-          {t('auditLogs.subtitle')}
-        </p>
+      <div className="flex items-center space-x-3.5 border-b border-slate-200 pb-4">
+        <AnumatiSetuLogo width={150} className="hidden sm:block shrink-0" />
+        <div>
+          <h1 className="text-xl font-bold text-gov-navy flex items-center">
+            <Shield className="w-5 h-5 mr-2 text-gov-blue" />
+            <span>{t('auditLogs.title')}</span>
+          </h1>
+          <p className="text-xs text-slate-500 mt-0.5">
+            {t('auditLogs.subtitle')}
+          </p>
+        </div>
       </div>
 
       {/* Filter Card */}

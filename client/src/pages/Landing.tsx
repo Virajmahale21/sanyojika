@@ -1,9 +1,9 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
 import { useTranslation } from 'react-i18next';
-import { AnumatiLogo, AnumatiBrand } from '../components/layout/AnumatiLogo';
+import { AnumatiSetuLogo } from '../components/layout/AnumatiSetuLogo';
 import {
   ShieldCheck,
   FileSearch,
@@ -227,13 +227,10 @@ export const Landing: React.FC = () => {
 
       {/* 2. Brand Header with Sign In CTAs */}
       <header className="bg-white border-b border-gov-border shadow-gov-xs sticky top-0 z-30">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 py-3.5 flex items-center justify-between">
-          <AnumatiBrand
-            size={42}
-            titlePrimary="Anumati"
-            titleAccent="Setu"
-            subtitle={t('portalSubtitle')}
-          />
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
+          <Link to="/" className="flex items-center hover:opacity-95 transition" title="AnumatiSetu">
+            <AnumatiSetuLogo width={220} className="h-11 md:h-12 w-auto object-contain" />
+          </Link>
 
           <div className="flex items-center space-x-3">
             {user ? (
@@ -270,6 +267,9 @@ export const Landing: React.FC = () => {
       {/* 3. Hero Section (Statutory Mandate) */}
       <section className="bg-gradient-to-b from-white via-blue-50/20 to-gov-surface border-b border-gov-border py-12 md:py-16 px-4 md:px-8">
         <div className="max-w-5xl mx-auto text-center">
+          <div className="flex justify-center mb-4">
+            <AnumatiSetuLogo width={280} className="h-16 md:h-20 w-auto object-contain" />
+          </div>
           <div className="inline-flex items-center space-x-2 bg-gov-blueLight border border-gov-border px-3.5 py-1 rounded-full text-xs font-bold text-gov-blue mb-4">
             <span className="w-2 h-2 rounded-full bg-gov-blue animate-ping"></span>
             <span>{t('landing.heroBadge')}</span>
@@ -475,12 +475,17 @@ export const Landing: React.FC = () => {
       {/* 7. Government Footer */}
       <footer className="bg-gov-navyDark text-slate-300 border-t-2 border-gov-saffron text-xs py-6 px-4 md:px-8 mt-auto">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-          <div>
-            <div className="font-semibold text-white">
-              {t('landing.footerCopyright')}
+          <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
+            <div className="bg-white/95 rounded px-2.5 py-1 shadow-sm">
+              <AnumatiSetuLogo width={140} className="h-7 md:h-8 w-auto object-contain" />
             </div>
-            <div className="text-[11px] text-amber-300/90 mt-0.5">
-              {t('landing.footerSub')}
+            <div className="sm:border-l sm:border-slate-700 sm:pl-4">
+              <div className="font-semibold text-white">
+                {t('landing.footerCopyright')}
+              </div>
+              <div className="text-[11px] text-amber-300/90 mt-0.5">
+                {t('landing.footerSub')}
+              </div>
             </div>
           </div>
 

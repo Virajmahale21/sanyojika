@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
-import { AnumatiLogo } from './AnumatiLogo';
+import { AnumatiSetuLogo } from './AnumatiSetuLogo';
 import {
   LayoutDashboard,
   FileText,
@@ -94,20 +94,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
     >
       <div>
         {/* 1. AnumatiSetu Dark Brand Box */}
-        <div className="bg-gov-navyDark border-b border-gov-sidebarBorder p-4 relative">
-          <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'space-x-3'}`}>
-            <AnumatiLogo size={isCollapsed ? 32 : 36} />
-            {!isCollapsed && (
-              <div className="flex flex-col leading-tight min-w-0 pr-8">
-                <div className="font-bold text-white text-base tracking-tight truncate">
-                  <span>Anumati</span>
-                  <span className="text-gov-saffron">Setu</span>
-                </div>
-                <div className="text-[10px] text-slate-300 font-medium truncate">
-                  {t('portalSubtitle')}
-                </div>
-              </div>
-            )}
+        <div className="bg-gov-navyDark border-b border-gov-sidebarBorder p-3 relative">
+          <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'space-x-2'}`}>
+            <NavLink to="/dashboard" className="block max-w-[190px] hover:opacity-95 transition" title="AnumatiSetu">
+              {isCollapsed ? (
+                <AnumatiSetuLogo width={46} className="h-10 w-auto object-contain mx-auto" />
+              ) : (
+                <AnumatiSetuLogo width={180} className="h-12 w-auto object-contain" />
+              )}
+            </NavLink>
           </div>
 
           {!isCollapsed && user && (
@@ -123,7 +118,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             type="button"
             onClick={toggleCollapse}
             className={`w-7 h-7 rounded bg-[#122b51] hover:bg-gov-sidebarHover border border-gov-sidebarBorder text-slate-200 flex items-center justify-center transition shadow-xs ${
-              isCollapsed ? 'mt-3 mx-auto' : 'absolute top-4 right-3'
+              isCollapsed ? 'mt-3 mx-auto' : 'absolute top-3.5 right-2.5'
             }`}
             title={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
             aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}

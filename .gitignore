@@ -12,6 +12,7 @@ server/dist/
 *.mp4
 *.wav
 *.mp3
+*.m4a
 *.docx
 video_build_anumatisetu/
 video_frames_test/
@@ -20,6 +21,21 @@ test_*.png
 step*.py
 build_*.py
 generate_*.py
+record_*.py
+render_*.py
+assemble_*.py
+test_*.py
+check_*.py
+inspect_*.py
+extract_*.py
+verify_*.py
+ref_frames/
+sih262_audio/
+slide_images/
+server/uploads/
+yt.html
+yt_meta.json
+transcript.json
 
 # Environment Variables & Secrets
 .env

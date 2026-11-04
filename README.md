@@ -221,6 +221,20 @@ Follow this 16-step sequence to review all portal capabilities:
 
 ---
 
+## 📚 Technical Documentation Suite
+
+For comprehensive technical, operational, and regulatory specifications, consult the project documentation:
+
+- 📑 [**REST API Specification**](docs/API.md) - Detailed breakdown of all endpoints, parameters, and payloads.
+- 🗄️ [**Database Architecture & ERD**](docs/DATABASE.md) - Prisma relational models, schema diagram, and indexing strategy.
+- 🐳 [**Deployment & Orchestration Guide**](docs/DEPLOYMENT.md) - Docker Compose, VPS hosting, and Vercel serverless instructions.
+- 🏛️ [**APH 2026-27 Compliance Matrix**](docs/APH_COMPLIANCE_MATRIX.md) - Clause-by-clause statutory mapping for SIH PS-262.
+- 🛠️ [**Contributing Guidelines**](CONTRIBUTING.md) - Local development setup, code standards, and PR protocols.
+- 🔒 [**Security Policy & Vulnerability Disclosure**](SECURITY.md) - Incident handling and security disclosure SLAs.
+- ⚖️ [**Open Source License**](LICENSE) - MIT License.
+
+---
+
 ## 📜 Regulatory Reference
 
 *AnumatiSetu is aligned with the Approval Process Handbook (APH 2026-27) published by the All India Council for Technical Education (AICTE), Ministry of Education, Government of India.*

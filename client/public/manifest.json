@@ -1,0 +1,26 @@
+{
+  "short_name": "AnumatiSetu",
+  "name": "AnumatiSetu — National Institutional Permission, Approval & Compliance Portal",
+  "description": "Unified regulatory portal automating technical institution approvals under AICTE APH 2026-27 with real-time OCR, conflict-free EVC allocation, and 3-tier SLA escalation.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192 512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/anumatisetu-english.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ],
+  "start_url": "/dashboard",
+  "background_color": "#0B1120",
+  "theme_color": "#1E3A8A",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "lang": "en-IN",
+  "categories": ["government", "productivity", "education"]
+}

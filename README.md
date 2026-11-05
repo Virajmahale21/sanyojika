@@ -5,6 +5,17 @@
 
 ---
 
+## 🌐 Live Production Deployment (24/7 Permanent)
+
+| Resource | Direct Link | Status |
+| :--- | :--- | :--- |
+| **Official Web Portal** | [https://sihfinale-nine.vercel.app](https://sihfinale-nine.vercel.app) | **🟢 Live 24/7** |
+| **Alternative Team URL** | [https://sihfinale-super-nexus.vercel.app](https://sihfinale-super-nexus.vercel.app) | **🟢 Live 24/7** |
+| **Backend API Health Check** | [https://sihfinale-nine.vercel.app/api/v1/health](https://sihfinale-nine.vercel.app/api/v1/health) | `{"status":"HEALTHY"}` |
+| **Demo Accounts Endpoint** | [https://sihfinale-nine.vercel.app/api/v1/auth/demo-accounts](https://sihfinale-nine.vercel.app/api/v1/auth/demo-accounts) | 7 Seeded Accounts |
+
+---
+
 ## 🏛️ Executive Summary
 
 **AnumatiSetu** is a production-grade, full-stack digital governance platform engineered to automate institutional approval lifecycles, enforce regulatory compliances under the AICTE Approval Process Handbook (APH 2026-27), extract certificate metadata via OCR, detect conflicts of interest in EVC inspections, and proactively escalate overdue statutory deadlines through multi-tier SLA alerting.
@@ -223,12 +234,16 @@ Follow this 16-step sequence to review all portal capabilities:
 
 ## 📚 Technical Documentation Suite
 
-For comprehensive technical, operational, and regulatory specifications, consult the project documentation:
+For comprehensive technical, operational, and regulatory specifications, consult the project documentation suite:
 
+- 🏛️ [**System Architecture & State Machine**](docs/ARCHITECTURE.md) - Deterministic 6-stage lifecycle, 3-tier SLA escalation, and delay-risk engine.
+- 🤖 [**AICTE Saarthi AI Copilot Specification**](docs/AICTE_SAARTHI.md) - RAG architecture over APH 2026-27, ethical guardrails, and multilingual query handling.
+- ⚖️ [**EVC Conflict-Free Committee Allocation**](docs/EVC_ALGORITHM.md) - Algorithmic expert selection, distance constraints, and anti-bias enforcement.
+- ⛓️ [**Cryptographic Audit Trail & SHA-256 Ledger**](docs/AUDIT_LEDGER.md) - Tamper-evident hash chaining and IT Act 2000 §65B evidentiary compliance.
 - 📑 [**REST API Specification**](docs/API.md) - Detailed breakdown of all endpoints, parameters, and payloads.
 - 🗄️ [**Database Architecture & ERD**](docs/DATABASE.md) - Prisma relational models, schema diagram, and indexing strategy.
 - 🐳 [**Deployment & Orchestration Guide**](docs/DEPLOYMENT.md) - Docker Compose, VPS hosting, and Vercel serverless instructions.
-- 🏛️ [**APH 2026-27 Compliance Matrix**](docs/APH_COMPLIANCE_MATRIX.md) - Clause-by-clause statutory mapping for SIH PS-262.
+- 📜 [**APH 2026-27 Compliance Matrix**](docs/APH_COMPLIANCE_MATRIX.md) - Clause-by-clause statutory mapping for SIH PS-262.
 - 🛠️ [**Contributing Guidelines**](CONTRIBUTING.md) - Local development setup, code standards, and PR protocols.
 - 🔒 [**Security Policy & Vulnerability Disclosure**](SECURITY.md) - Incident handling and security disclosure SLAs.
 - ⚖️ [**Open Source License**](LICENSE) - MIT License.

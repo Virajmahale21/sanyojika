@@ -1,10 +1,16 @@
 # GitHub Linguist Language Detection Configuration
-ai_engine/*.py linguist-detectable=true
-scripts/*.ts linguist-detectable=true
-client/src/**/*.ts linguist-detectable=true
-client/src/**/*.tsx linguist-detectable=true
-server/src/**/*.ts linguist-detectable=true
+# Set Python as the primary repository language by vendoring web client/server assets
+client/** linguist-vendored
+server/** linguist-vendored
+*.ts linguist-detectable=false
+*.tsx linguist-detectable=false
+*.js linguist-detectable=false
+*.jsx linguist-detectable=false
 
-# Mark documentation files so they do not skew language statistics
-docs/* linguist-documentation
+# Actively detect and track all Python code
+*.py linguist-detectable=true
+ai_engine/** linguist-detectable=true
+
+# Mark documentation files so they do not skew code statistics
+docs/** linguist-documentation
 *.md linguist-documentation

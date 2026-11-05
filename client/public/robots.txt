@@ -1,0 +1,15 @@
+# AnumatiSetu — National Institutional Permission, Approval & Compliance Portal
+# AICTE APH 2026-27 Statutory Governance Platform
+
+User-agent: *
+Allow: /
+Allow: /login
+Allow: /reports
+
+# Disallow indexing of private workbench and administrative consoles
+Disallow: /admin
+Disallow: /audit-logs
+Disallow: /api/
+Disallow: /uploads/
+
+Sitemap: https://sihfinale-nine.vercel.app/sitemap.xml

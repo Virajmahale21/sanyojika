@@ -1,0 +1,67 @@
+name: Security & Code Quality Audit
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 6 * * 1' # Weekly scan every Monday at 06:00 UTC
+
+jobs:
+  security-audit:
+    name: Dependency Vulnerability Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Run root npm audit
+        run: npm audit --audit-level=high || true
+
+      - name: Run server npm audit
+        run: |
+          cd server
+          npm audit --audit-level=high || true
+
+      - name: Run client npm audit
+        run: |
+          cd client
+          npm audit --audit-level=high || true
+
+  static-analysis:
+    name: Static Type & Code Consistency Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install root dependencies & generate Prisma
+        run: |
+          npm install --ignore-scripts
+          npx prisma generate
+
+      - name: Verify server TypeScript compilation
+        run: |
+          cd server
+          npm install
+          npx tsc --noEmit
+
+      - name: Verify client TypeScript compilation
+        run: |
+          cd client
+          npm install
+          npx tsc --noEmit

@@ -8,7 +8,7 @@ from uploaded PDF/Image documents (Fire NOC, Building Plan, Land Ownership).
 
 import re
 from typing import Dict, Any, Optional
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 class DocumentOcrProcessor:
@@ -26,7 +26,8 @@ class DocumentOcrProcessor:
             r"(\d{1,2}(?:st|nd|rd|th)?\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{4})",
         ],
         "issuing_authority": [
-            r"((?:Chief\s+Fire\s+Officer|Municipal\s+Corporation|Town\s+Planning\s+Authority|Directorate\s+of\s+Fire\s+Services)[^,\n]+)",
+            r"Issuing\s*Authority\s*[:\-]?\s*([^\n\r]+)",
+            r"((?:Chief\s+Fire\s+Officer|Directorate\s+of\s+Fire\s+Services|Municipal\s+Corporation|Town\s+Planning\s+Authority)[^,\n]+)",
             r"((?:Public\s+Works\s+Department|Competent\s+Authority|District\s+Collector)[^,\n]+)",
         ]
     }
@@ -73,5 +74,5 @@ class DocumentOcrProcessor:
             "issuingAuthority": extracted_authority or "COMPETENT_STATUTORY_AUTHORITY",
             "confidenceScore": confidence_score,
             "verificationStatus": "VERIFIED" if is_verified else "REQUIRES_MANUAL_REVIEW",
-            "processedAt": datetime.utcnow().isoformat() + "Z"
+            "processedAt": datetime.now(timezone.utc).isoformat()
         }

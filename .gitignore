@@ -30,6 +30,8 @@ record_*.py
 render_*.py
 assemble_*.py
 test_*.py
+!tests/**
+!tests/*.py
 check_*.py
 inspect_*.py
 extract_*.py

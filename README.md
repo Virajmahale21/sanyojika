@@ -1,259 +1,102 @@
-# AnumatiSetu (अनुमतिसेतु / अनुमतिसेतू)
-### *National Institutional Permission, Approval & Compliance Management Portal*
-**Ministry of Education & All India Council for Technical Education (AICTE)**  
-*Statutory digital platform aligned with AICTE Approval Process Handbook (APH 2026–27).*
+# AICTE Sanyojika (संयोजिका) 🏛️
+
+> **Intelligent Multi-Bureau Institution Complaint Monitoring & Inter-Agency Coordination Platform**  
+> *Smart India Hackathon (SIH 2026) — Problem Statement 262 / 264*
+
+[![Live Portal](https://img.shields.io/badge/Live%20Portal-Vercel%20Deployed-0070f3?style=for-the-badge&logo=vercel)](https://sih-264.vercel.app)
+[![API Gateway](https://img.shields.io/badge/REST%20API-Render%20Cloud-46E3B7?style=for-the-badge&logo=render)](https://sih264.onrender.com)
+[![Python Engine](https://img.shields.io/badge/AI%20Engine-Python%203.11-3776AB?style=for-the-badge&logo=python)](docs/SANYOJIKA_ARCHITECTURE.md)
+[![TypeScript UI](https://img.shields.io/badge/Frontend-Next.js%2014-black?style=for-the-badge&logo=next.js)](client)
+[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen?style=for-the-badge)](tests)
 
 ---
 
-## 🌐 Live Production Deployment (24/7 Permanent)
+## 📌 Executive Overview
 
-| Resource | Direct Link | Status |
-| :--- | :--- | :--- |
-| **Official Web Portal** | [https://sihfinale-nine.vercel.app](https://sihfinale-nine.vercel.app) | **🟢 Live 24/7** |
-| **Alternative Team URL** | [https://sihfinale-super-nexus.vercel.app](https://sihfinale-super-nexus.vercel.app) | **🟢 Live 24/7** |
-| **Backend API Health Check** | [https://sihfinale-nine.vercel.app/api/v1/health](https://sihfinale-nine.vercel.app/api/v1/health) | `{"status":"HEALTHY"}` |
-| **Demo Accounts Endpoint** | [https://sihfinale-nine.vercel.app/api/v1/auth/demo-accounts](https://sihfinale-nine.vercel.app/api/v1/auth/demo-accounts) | 7 Seeded Accounts |
+**Sanyojika** is an enterprise-grade AI governance platform developed for the **All India Council for Technical Education (AICTE)**. It breaks through administrative silos between the **Public Grievance Redressal Cell (PGRC)**, **Regional Bureaus (RB)**, **Approval Bureau**, and **Central Vigilance Cell**.
+
+Using advanced semantic NLP embeddings, real-time overlap collision detection, and topological graph intelligence, Sanyojika prevents contradictory rulings, flags duplicate complaints across independent portals, and orchestrates cross-bureau joint inquiry mandates.
 
 ---
 
-## 🏛️ Executive Summary
+## 🚀 Key Functional Modules
 
-**AnumatiSetu** is a production-grade, full-stack digital governance platform engineered to automate institutional approval lifecycles, enforce regulatory compliances under the AICTE Approval Process Handbook (APH 2026-27), extract certificate metadata via OCR, detect conflicts of interest in EVC inspections, and proactively escalate overdue statutory deadlines through multi-tier SLA alerting.
-
-### Core Key Features
-- **Official Government-Standard UI**: Classic, restrained visual identity tailored around Indian public-sector digital principles (Deep Navy `#061D45`, Government Blue `#1565C0`, Saffron `#F4A900`, Forest Green `#15803D`, and Amber `#B45309`).
-- **Complete Trilingual Localization**: Full, native-quality support for **English (`en`)**, **Hindi (`hi`)**, and **Marathi (`mr`)** across all headings, KPI cards, form controls, canonical status badges, notifications, and AICTE Saarthi assistant responses without page reloads.
-- **7-Tier Role-Based Access Control (RBAC)**: Backend-enforced authorization and data isolation across Super Admin, Central Admin, Bureau Officer, Regional Officer, EVC Member, Institution Admin, and Vigilance Auditor.
-- **End-to-End Approval Workflow Engine**: Configurable 6-stage lifecycle (`Draft` ➔ `Submitted` ➔ `Initial Validation` ➔ `Under Scrutiny` ➔ `Deficiency Notice Loop` ➔ `EVC Inspection` ➔ `Committee Review` ➔ `Approved / Rejected`).
-- **Intelligent OCR Certificate Pre-fill & Review**: Automatic extraction of certificate numbers, validity dates, and issuing authorities from statutory documents (Fire NOC, Land Title Deeds, Building Plans).
-- **Automated SLA Breach & Hierarchical Escalation**: Multi-tier escalation engine (Level 1: 3-day breach ➔ Scrutiny Officer; Level 2: 7-day breach ➔ Regional Director; Level 3: 14-day critical breach ➔ Member Secretary HQ).
-- **EVC Inspection Conflict-of-Interest Detection**: Automatic algorithmic guard preventing appointment of committee experts affiliated with the applicant institution or parent university (APH §2.4).
-- **AICTE Saarthi (एआईसीटीई सारथी)**: Trilingual conversational governance assistant with deterministic APH 2026-27 handbook grounding and official chapter/clause citations.
-- **One-Click Demo Role Switcher & Presentation Mode**: Instant role switching from the top header and repeatable database reset for evaluation.
+| # | Module | Description | Documentation |
+| :--- | :--- | :--- | :--- |
+| **01** | **Role Authentication & RBAC** | Instant persona switching across HQ, Regional Bureau, PGRC & Scrutiny. | [User Manual](docs/SANYOJIKA_USER_MANUAL.md#1-authentication--role-switching) |
+| **02** | **Integrated Dashboard** | Executive telemetry: 220+ complaints, 68 overlap collisions, 4 mandates. | [Dashboard Spec](docs/SANYOJIKA_USER_MANUAL.md#2-integrated-executive-dashboard) |
+| **03** | **Grievance Ingestion** | Central registry submission with instant AI collision scoring. | [Intake Flow](docs/SANYOJIKA_USER_MANUAL.md#3-grievance-registration) |
+| **04** | **Complaints Repository** | High-performance multi-faceted search, status filters, and CSV exports. | [Repository Guide](docs/SANYOJIKA_USER_MANUAL.md#4-complaints-repository--multi-faceted-filtering) |
+| **05** | **Complaint Detail Dossier** | Comprehensive chronological timeline and OCR document inspector. | [Dossier Inspection](docs/SANYOJIKA_USER_MANUAL.md#5-complaint-detail-dossier-inspection) |
+| **06** | **Institutions Directory** | Pan-India college directory with 50+ colleges and Permanent PID lookups. | [Institutions Guide](docs/SANYOJIKA_USER_MANUAL.md#6-institutions-directory) |
+| **07** | **AI Overlap Detection** | Semantic similarity engine identifying cross-bureau case collisions. | [Overlap Engine](ai_engine/nlp_embeddings.py) |
+| **08** | **Side-by-Side Comparison** | Dual-pane case inspector highlighting shared allegations and evidence. | [Compare Spec](docs/SANYOJIKA_USER_MANUAL.md#8-side-by-side-dual-pane-case-comparison) |
+| **09** | **Cross-Bureau Coordination** | Formal joint inquiry mandates, consensus voting, and Append Action notes. | [Coordination Protocol](docs/CROSS_BUREAU_COORDINATION_PROTOCOL.md) |
+| **10** | **Relationship Graph** | Interactive force-directed topological network of cases and colleges. | [Graph Topology](docs/SANYOJIKA_ARCHITECTURE.md#33-force-directed-relationship-topology-graph) |
+| **11** | **Executive Analytics** | Regional heatmaps, SLA compliance curves, and bureau turnaround stats. | [Analytics Spec](docs/SANYOJIKA_USER_MANUAL.md#11-reports--executive-analytics) |
+| **12** | **Audit History Ledger** | Append-only immutable transaction log ensuring zero-tamper governance. | [Security & Audit](docs/SECURITY_AND_RBAC_MODEL.md) |
 
 ---
 
-## 🏗️ Architecture & Technology Stack
+## 🛠️ System Architecture
 
 ```mermaid
 graph TD
-    Client["React 18 + Vite + TypeScript (Client)"]
-    Tailwind["Tailwind CSS (Gov-Standard Palette)"]
-    i18n["react-i18next (English / हिन्दी / मराठी)"]
-    Recharts["Recharts (Data Intelligence)"]
-    
-    API["Express.js + TypeScript (REST API Server)"]
-    Prisma["Prisma ORM (Relational Engine)"]
-    DB[("SQLite Database (Zero-Config / PG Ready)")]
-    
-    OCR["OCR Extraction Service"]
-    Risk["Delay-Risk Scoring Engine"]
-    Escalation["Automated SLA Escalation Service"]
-    Saarthi["AICTE Saarthi Multilingual Assistant"]
-    Email["Simulated Email Adapter"]
-    
-    Client --> API
-    API --> Prisma
-    Prisma --> DB
-    API --> OCR
-    API --> Risk
-    API --> Escalation
-    API --> Saarthi
-    API --> Email
-```
-
-- **Frontend**: React 18, TypeScript, Vite, Tailwind CSS, Lucide React, Recharts, react-i18next, clsx.
-- **Backend**: Node.js, Express.js, TypeScript, Prisma ORM, JWT, bcryptjs, Multer, Helmet, Morgan.
-- **Database**: SQLite (default zero-config portable database with 20+ models, foreign keys, and indexes) / PostgreSQL compatible.
-- **Testing**: Vitest, Supertest.
-
----
-
-## 👥 Stakeholder Roles & Demo Credentials
-
-All demo user accounts are pre-seeded and accessible with password: **`Password@123`**.  
-Evaluators can also use the **"Quick Role Switcher"** button located in the top header to switch roles instantly with a single click.
-
-| Role | Stakeholder Name & Designation | Official Email | Scope of Authority |
-|---|---|---|---|
-| **Super Administrator** | Shri Rajeshwar Rao (CTO) | `superadmin@aicte.gov.in` | Global system control, user creation, workflow templates, audit logs, demo reset. |
-| **Central AICTE Admin** | Prof. T. G. Sitharam (Secretariat) | `centraladmin@aicte.gov.in` | Council oversight, final approval/rejection orders, national pendency reports. |
-| **Bureau Officer** | Dr. Amit V. Deshmukh (Engg Bureau) | `bureau.officer@aicte.gov.in` | Scrutiny desk, deficiency notices, OCR verification, advancing stages. |
-| **Regional Officer** | Dr. Sunil K. Sonawane (WRO Director) | `regional.wro@aicte.gov.in` | Regional coordination, scheduling EVC inspections, conflict detection. |
-| **EVC Expert Member** | Prof. Milind Atrey (IIT Bombay) | `evc.expert@iitb.ac.in` | Committee chairman, physical/virtual checklist scoring, recommendation reports. |
-| **Institutional Admin** | Dr. Faruk Kazi (Nodal Officer, GCET) | `principal@gcet.edu.in` | Application creation, course intake, document uploads, compliance evidence. |
-| **Vigilance Auditor** | Smt. Kavita Sharma (IRS) | `auditor.vigilance@aicte.gov.in` | Read-only compliance oversight, immutable audit trail, vigilance inspection. |
-
----
-
-## 🗄️ Relational Database Schema
-
-```mermaid
-erDiagram
-    Institution ||--o{ Application : submits
-    Institution ||--o{ Document : stores
-    Institution ||--o{ Inspection : undergoes
-    Institution ||--o{ ComplianceSubmission : fulfills
-    Application ||--o{ ApplicationCourse : offers
-    Application ||--o{ Document : requires
-    Application ||--o{ Inspection : triggers
-    Application ||--o{ Task : generates
-    Inspection ||--o{ InspectionMember : assigns
-    Inspection ||--o{ InspectionChecklist : assesses
-    Document ||--o| DocumentOcrData : extracts
-    ComplianceRequirement ||--o{ ComplianceSubmission : defines
-    Task ||--o{ EscalationEvent : escalates
-    User ||--o{ Notification : receives
-    User ||--o{ AuditLog : records
+    Client[Next.js 14 Web Portal] -->|JWT Authenticated| Gateway[Express REST API Gateway]
+    Gateway --> DB[(PostgreSQL / Prisma ORM)]
+    Gateway --> AI[Python AI Intelligence Microservice]
+    AI --> Overlap[NLP Semantic Embeddings & Overlap Detector]
+    AI --> Risk[Institutional Risk & SLA Model]
+    Gateway --> Ledger[(Immutable Cryptographic Audit Trail)]
 ```
 
 ---
 
-## 🚀 Quickstart & Setup Guide
+## 💻 Tech Stack
+
+- **Frontend:** Next.js 14, React 18, TypeScript, TailwindCSS, Lucide Icons, Canvas Physics
+- **Backend Services:** Node.js, Express, Prisma ORM, JWT, SQLite / PostgreSQL
+- **AI Microservice:** Python 3.11, FastAPI / Flask, NumPy, Scikit-learn, PyTesseract OCR
+- **Hosting & Infrastructure:** Vercel (Edge CDN), Render (Compute & Databases), GitHub Actions (CI/CD)
+
+---
+
+## 🧪 Local Quickstart
 
 ### Prerequisites
-- **Node.js**: v18.0.0 or higher (v24 LTS recommended)
-- **npm**: v9.0.0 or higher
+- Node.js 18+ & npm
+- Python 3.10+
+- Git
 
-### 1. Installation
-Clone the repository and install all dependencies for root, server, and client:
+### 1. Clone the Repository
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/anumatisetu-portal.git
-cd anumatisetu-portal
-
-# Install root dependencies
-npm install
-
-# Setup backend (install packages, generate Prisma client, push schema, seed demo data)
-npm run setup:server
-
-# Setup frontend (install client packages)
-npm run setup:client
+git clone https://github.com/Virajmahale21/sanyojika-ps262.git
+cd sanyojika-ps262
 ```
 
-### 2. Run the Application
-Run both backend and frontend concurrently with a single command:
+### 2. Run the AI Microservice
 ```bash
+python -m unittest discover tests/
+python scripts/sanyojika_healthcheck.py
+```
+
+### 3. Launch Frontend & Backend
+```bash
+# Backend
+cd server
+npm install
+npm run dev
+
+# Frontend (in a separate terminal)
+cd client
+npm install
 npm run dev
 ```
-
-- **Frontend Application**: [http://localhost:5173](http://localhost:5173)
-- **Backend API Server**: [http://localhost:5000/api/v1](http://localhost:5000/api/v1)
-- **Health Check Endpoint**: [http://localhost:5000/api/v1/health](http://localhost:5000/api/v1/health)
-
-### 3. Run Automated Tests
-```bash
-npm test
-```
-Executes the comprehensive Vitest integration suite verifying:
-- Health and system uptime
-- Demo accounts retrieval
-- JWT authentication and token verification
-- Role-based application scoping
-- Real database KPI dashboard calculation
-- Automated SLA escalation triggers
-- Trilingual AI assistant query responses with APH citations
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 🎬 Step-by-Step Demonstration Script (For Evaluators)
-
-Follow this 16-step sequence to review all portal capabilities:
-
-1. **Login & Role Check**:
-   - Navigate to [http://localhost:5173](http://localhost:5173).
-   - Click the **"One-Click Stakeholder Demo Switcher"** for **`INSTITUTION_ADMIN`** (Dr. Faruk Kazi - GCET Mumbai).
-2. **Instant Language Switching (Hindi)**:
-   - In the top utility bar, click **"हिन्दी"**.
-   - Notice how all navigation links, dashboard KPI cards, status labels, and dates immediately switch to formal Hindi without a page reload.
-3. **Application Creation**:
-   - Go to **"आवेदन प्रबंधन"** (Applications) and click **"Create New Application"**.
-   - Select **Extension of Approval (EoA)** for AY 2026-2027.
-   - Enter proposed intake for an AI/ML course, accept the statutory declaration, and submit.
-4. **Instant Language Switching (Marathi)**:
-   - In the top header, click **"मराठी"**.
-   - The entire interface transitions to formal administrative Marathi.
-5. **Switch to Bureau Scrutiny Officer**:
-   - Use the **"त्वरित भूमिका बदला"** (Role Switcher) in the header to switch to **`BUREAU_OFFICER`** (Dr. Amit V. Deshmukh).
-   - Open the newly submitted application dossier.
-6. **Intelligent OCR Certificate Verification**:
-   - Go to the **"Mandatory Documents & OCR"** tab.
-   - Click **"Verify OCR"** on the Municipal Fire NOC.
-   - Notice the extracted Certificate Number, Issue Date, Expiry Date, and 96% match confidence score. Click **"Confirm & Save"**.
-7. **Issue Deficiency Notice**:
-   - In the action bar, click **"त्रुटी नोटीस काढा"** (Raise Deficiency Notice).
-   - Enter deficiency text: *"Please provide renewed Fire Safety NOC acknowledgement receipt."*
-   - Notice the status immediately changes to **`DOCUMENTS_REQUIRED`** and the AI Delay-Risk score automatically recalculates to HIGH.
-8. **Institutional Response**:
-   - Switch role back to **`INSTITUTION_ADMIN`**.
-   - Open the notification drawer (bell icon) to see the deficiency notification.
-   - Click **"View Email Template"** to open the realistic simulated bilingual email preview.
-9. **Schedule EVC Inspection with Conflict-of-Interest Guard**:
-   - Switch role to **`REGIONAL_OFFICER`** (Dr. Sunil K. Sonawane, Western Region Director).
-   - Navigate to **"EVC Inspections"** and click **"Schedule EVC Inspection"**.
-   - Select the pending application dossier, set date, and assign committee chair. Notice how the conflict-of-interest check confirms independence.
-10. **Record On-Site EVC Observation & Checklist**:
-    - Switch role to **`EVC_MEMBER`** (Prof. Milind Atrey, IIT Bombay).
-    - Under **"EVC Inspections"**, click **"Submit Inspection Report"**.
-    - Mark the statutory checklist items (Infrastructure, Labs, Faculty Biometric Roster, Divyangjan Ramps) as Compliant, select **"RECOMMENDED FOR APPROVAL"**, and submit.
-11. **Grant Final Council Approval**:
-    - Switch role to **`CENTRAL_ADMIN`** (Prof. T. G. Sitharam, Council Secretariat).
-    - Open the application dossier and click **"Record Council Decision"**.
-    - Select **`APPROVED`**, record the approval order reference, and submit.
-12. **Trigger Automated SLA Breach Escalation**:
-    - Navigate to **"Tasks & Escalations"**.
-    - Click **"Scan & Trigger Escalations"**.
-    - Watch the automated engine scan all active tasks, detect overdue statutory windows, and trigger Level 1 and Level 2 escalations with critical red alerts!
-13. **Consult AICTE Saarthi**:
-    - Click the **"AICTE Saarthi"** button in the header.
-    - Ask in English, Hindi, or Marathi: *"What are the Fire NOC requirements?"* or *"संकाय कैडर अनुपात नियम क्या हैं?"*.
-    - Observe the regulatory explanation and citations to APH 2026-27 Chapter II / Appendix 7.
-14. **Analytics & Data Export**:
-    - Open **"Reports & Analytics"**.
-    - Inspect the average processing turnaround duration and compliance fulfillment rate.
-    - Click **"Export to CSV"** to download the complete official spreadsheet.
-15. **Inspect the Immutable Audit Trail**:
-    - Open **"Audit Trail"**.
-    - Review the chronological log showing every single stage transition, document review, and decision with exact actor role, timestamp, and IP address.
-16. **Reset Demo State**:
-    - Go to **"System Administration"**.
-    - Click **"Reset Demo State"** to restore pristine baseline records anytime during presentation.
-
----
-
-## 🔒 Security & Privacy Features
-
-- **Password Encryption**: All passwords securely hashed using `bcryptjs` with salt rounds.
-- **JWT Protection**: Session tokens signed with HMAC-SHA256 and configurable expiry.
-- **Strict Data Isolation**: Institutional administrators can only access dossiers and documents belonging to their verified institution PID.
-- **Zero Real Data**: 100% synthetic demonstration data compliant with Indian privacy directives.
-- **Audit Logging**: Every consequential administrative action is permanently recorded in the database.
-
----
-
-## 📚 Technical Documentation Suite
-
-For comprehensive technical, operational, and regulatory specifications, consult the project documentation suite:
-
-- 🏛️ [**System Architecture & State Machine**](docs/ARCHITECTURE.md) - Deterministic 6-stage lifecycle, 3-tier SLA escalation, and delay-risk engine.
-- 📐 [**Mathematical Formulation of Delay Risk**](docs/MATHEMATICAL_MODEL.md) - Formulae, penalty weighting functions, and SLA breach boundaries.
-- 🤖 [**AICTE Saarthi AI Copilot Specification**](docs/AICTE_SAARTHI.md) - RAG architecture over APH 2026-27, ethical guardrails, and multilingual query handling.
-- 🔌 [**Node.js & Python AI Integration Guide**](docs/AI_INTEGRATION_GUIDE.md) - IPC sequence, microservice endpoints, and fallback strategies.
-- ⚖️ [**EVC Conflict-Free Committee Allocation**](docs/EVC_ALGORITHM.md) - Algorithmic expert selection, distance constraints, and anti-bias enforcement.
-- ⛓️ [**Cryptographic Audit Trail & SHA-256 Ledger**](docs/AUDIT_LEDGER.md) - Tamper-evident hash chaining and IT Act 2000 §65B evidentiary compliance.
-- 📑 [**REST API Specification**](docs/API.md) - Detailed breakdown of all endpoints, parameters, and payloads.
-- 🗄️ [**Data Dictionary & Schema Reference**](docs/DATA_DICTIONARY.md) - Field-level documentation for all 21 Prisma models and relations.
-- 🗄️ [**Database Architecture & ERD**](docs/DATABASE.md) - Prisma relational models, schema diagram, and indexing strategy.
-- 🐳 [**Deployment & Orchestration Guide**](docs/DEPLOYMENT.md) - Docker Compose, VPS hosting, and Vercel serverless instructions.
-- 🛡️ [**Disaster Recovery & High Availability Runbook**](docs/DISASTER_RECOVERY.md) - RTO/RPO targets, automated snapshots, and failover runbooks.
-- 📜 [**APH 2026-27 Compliance Matrix**](docs/APH_COMPLIANCE_MATRIX.md) - Clause-by-clause statutory mapping for SIH PS-262.
-- 🛠️ [**Contributing Guidelines**](CONTRIBUTING.md) - Local development setup, code standards, and PR protocols.
-- 🔒 [**Security Policy & Vulnerability Disclosure**](SECURITY.md) - Incident handling and security disclosure SLAs.
-- ⚖️ [**Open Source License**](LICENSE) - MIT License.
-
----
-
-## 📜 Regulatory Reference
-
-*AnumatiSetu is aligned with the Approval Process Handbook (APH 2026-27) published by the All India Council for Technical Education (AICTE), Ministry of Education, Government of India.*
+## 👥 Smart India Hackathon (SIH 2026) Team
+- **Project:** AICTE Sanyojika (Problem Statement 262 / 264)
+- **Lead Developer:** Viraj Mahale ([@Virajmahale21](https://github.com/Virajmahale21))
+- **Ministry / Department:** All India Council for Technical Education (AICTE), Ministry of Education

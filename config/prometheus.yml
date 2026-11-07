@@ -1,0 +1,15 @@
+# Prometheus Telemetry Configuration for AICTE Sanyojika
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: "sanyojika_backend"
+    metrics_path: "/metrics"
+    static_configs:
+      - targets: ["localhost:5000"]
+
+  - job_name: "sanyojika_ai_engine"
+    metrics_path: "/metrics"
+    static_configs:
+      - targets: ["localhost:8000"]

@@ -1,0 +1,98 @@
+openapi: 3.0.3
+info:
+  title: AICTE Sanyojika Core API Gateway
+  description: REST API specification for AICTE Problem Statement 262/264 - Intelligent Institution Complaint Monitoring & Multi-Bureau Coordination Engine.
+  version: 2.4.0
+servers:
+  - url: https://sih264.onrender.com/api
+    description: Production Cloud Gateway
+  - url: http://localhost:5000/api
+    description: Local Development Environment
+
+paths:
+  /auth/login:
+    post:
+      summary: Officer Authentication & Token Issuance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email:
+                  type: string
+                  example: admin@aicte.gov.in
+                password:
+                  type: string
+                  example: admin123
+      responses:
+        '200':
+          description: JWT Bearer Token and User Profile
+
+  /complaints:
+    get:
+      summary: Retrieve Paginated Complaints Repository
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [PENDING, UNDER_SCRUTINY, JOINT_INVESTIGATION, RESOLVED]
+        - name: bureau
+          in: query
+          schema:
+            type: string
+            enum: [PGRC, REGIONAL_BUREAU, APPROVAL_BUREAU, CENTRAL_VIGILANCE]
+        - name: overlaps_only
+          in: query
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Filtered Grievance Records
+
+    post:
+      summary: Register Grievance into Central Registry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [institutionId, category, narrative]
+              properties:
+                institutionId:
+                  type: string
+                  example: 1-1049281
+                category:
+                  type: string
+                  example: Capitation Fees & Financial Irregularity
+                narrative:
+                  type: string
+                  example: Demanding cash payments for seats.
+      responses:
+        '201':
+          description: Grievance Created and Registered
+
+  /overlaps:
+    get:
+      summary: Retrieve Active Cross-Bureau Overlap Collisions
+      responses:
+        '200':
+          description: List of Colliding Grievance Pairs with Similarity Metric
+
+  /coordination:
+    get:
+      summary: List Inter-Bureau Coordination Mandates
+      responses:
+        '200':
+          description: Active Multi-Bureau Joint Inquiries
+
+  /audit-logs:
+    get:
+      summary: Retrieve Tamper-Evident Ledger Audit Records
+      responses:
+        '200':
+          description: Chronological Officer and System Event Trace

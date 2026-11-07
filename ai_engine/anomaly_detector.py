@@ -6,7 +6,7 @@ Detects statistical outliers in grievance filing velocities and intake spikes.
 from typing import Dict, List, Any
 import math
 
-def calculate_anomaly_score(daily_counts: List[int], threshold_z: float = 2.5) -> Dict[str, Any]:
+def calculate_anomaly_score(daily_counts: List[int], threshold_z: float = 2.0) -> Dict[str, Any]:
     if not daily_counts:
         return {"anomaly_detected": False, "z_score": 0.0, "mean": 0.0, "std_dev": 0.0}
     

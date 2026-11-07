@@ -1,0 +1,126 @@
+================================================================================
+  AICTE SANYOJIKA SYSTEM — COMPLETE FEATURE-WISE DOCUMENTATION INDEX
+  Intelligent Institution Complaint Monitoring & Coordination System
+  Problem Statement 264 | Ministry of Education & AICTE, Government of India
+================================================================================
+
+Target Live Application: https://sih-264.vercel.app/
+Repository Root: Sanyojika_System_Documentation/
+
+Production Standards:
+  - Total Modules Documented: 12 (100% Complete Sanyojika System Coverage)
+  - Video Specifications: MP4 (H.264 / AAC, 1920x1080 Full HD, 30 FPS)
+  - Audio Voice-Over Engine: Microsoft Neural AI (Voice: en-IN-PrabhatNeural)
+  - Screenshot Standard: 3 High-Resolution Screenshots per feature (Initial, Interaction, Result)
+
+--------------------------------------------------------------------------------
+  DOCUMENTED FEATURE PACKAGES
+--------------------------------------------------------------------------------
+
+[01] Feature_01_Authentication_and_Role_Switching
+     Feature Name:    Authentication & Multi-Role Switching
+     Live Route:      https://sih-264.vercel.app/login
+     Authorized Roles:Admin (HQ), Bureau Head (RB), Bureau Head (PGRC), Scrutiny Officer (North)
+     Demo Video:      Feature_01_Authentication_and_Role_Switching/Feature_Demo.mp4
+     Screenshots:     Feature_01_Authentication_and_Role_Switching/Screenshots/ (3 files: 01_Initial_Screen.png, 02_Interaction_DataEntry.png, 03_Final_Result.png)
+     Description:     Official single-sign-on credentials entry, one-click demo role switching, trilingual localization toggles (English, Hindi, Marathi), and secure JWT session issuance.
+     Voiceover Text:  "Welcome to the AICTE Sanyojika System authentication module. Sanyojika provides secure role-based access control for official administrative users across AICTE bureaus. Officials can seamlessly switch between authorized administrative personas, including Central Administration, the Regulation Bureau, the Public Grievance Redressal Cell, and Regional Directorates. The portal also features instant trilingual switching across English, Hindi, and Marathi, ensuring accessibility and transparency across technical institutions."
+
+[02] Feature_02_Integrated_Dashboard
+     Feature Name:    Integrated Complaint Monitoring Dashboard
+     Live Route:      https://sih-264.vercel.app/
+     Authorized Roles:All Authorized AICTE Officials
+     Demo Video:      Feature_02_Integrated_Dashboard/Feature_Demo.mp4
+     Screenshots:     Feature_02_Integrated_Dashboard/Screenshots/ (3 files: 01_Initial_Screen.png, 02_Interaction_DataEntry.png, 03_Final_Result.png)
+     Description:     Centralized executive overview tracking 6 statutory KPI indicators (Total Grievances, Pending Scrutiny, SLA Overdue, Overlaps Flagged, Disposed Cases, Escalated to HQ), Monthly Intake vs Disposal trends, Departmental Workload distribution, and Live Data Refresh.
+     Voiceover Text:  "The AICTE Sanyojika Integrated Dashboard provides an executive command center for monitoring institutional grievances across all AICTE directorates. Administrators track critical statutory indicators, including pending scrutiny, citizen charter SLA breaches, and flagged cross-bureau overlaps in real time. Interactive trend analytics showcase monthly intake velocity and departmental workload distribution, ensuring high-priority cases receive timely administrative oversight."
+
+[03] Feature_03_Grievance_Registration
+     Feature Name:    Grievance Registration & Data Intake Workflow
+     Live Route:      https://sih-264.vercel.app/complaints (+ Register Grievance Modal)
+     Authorized Roles:Admin (HQ), Scrutiny Officers, Intake Cell
+     Demo Video:      Feature_03_Grievance_Registration/Feature_Demo.mp4
+     Screenshots:     Feature_03_Grievance_Registration/Screenshots/ (3 files: 01_Initial_Screen.png, 02_Interaction_DataEntry.png, 03_Final_Result.png)
+     Description:     Structured intake form capturing Target Institution, Grievance Category, Receiving Bureau, Complainant Type, Priority, and Grievance Narrative with mandatory field validation and initial SLA deadline generation.
+     Voiceover Text:  "The Grievance Registration workflow enables structured data intake across multiple AICTE intake channels. Users select accredited institutions using permanent identifiers, categorize the grievance domain, and assign the initial handling bureau. Mandatory field validation ensures complete documentary allegations are submitted before lodging, establishing clear regulatory provenance and automated SLA deadlines."
+
+[04] Feature_04_Complaints_Repository_and_Filtering
+     Feature Name:    Centralized Complaints Repository & Triage Filtering
+     Live Route:      https://sih-264.vercel.app/complaints
+     Authorized Roles:All Administrative Officials
+     Demo Video:      Feature_04_Complaints_Repository_and_Filtering/Feature_Demo.mp4
+     Screenshots:     Feature_04_Complaints_Repository_and_Filtering/Screenshots/ (3 files: 01_Initial_Screen.png, 02_Interaction_DataEntry.png, 03_Final_Result.png)
+     Description:     Master table containing 220+ institutional grievance records. Includes full-text search across Case IDs, AICTE PIDs, and keywords; multi-parameter filtering by Bureau, Status, and Priority; quick filter toggles for 'Overdue Only' and 'Overlaps Only'; and one-click CSV data export.
+     Voiceover Text:  "The Centralized Complaint Repository delivers comprehensive search, triage, and filtering capabilities across all AICTE files. Regulatory officers filter cases by handling bureau, status, priority, and citizen charter deadline expiration. Dedicated toggles isolate active overlaps and overdue files instantly, while one-click CSV export generates audit-ready records for committee review."
+
+[05] Feature_05_Complaint_Detail_Inspection
+     Feature Name:    Comprehensive Case Detail & Lifecycle Tracking
+     Live Route:      https://sih-264.vercel.app/complaints (Case Inspection View)
+     Authorized Roles:Assigned Case Officers, Bureau Heads
+     Demo Video:      Feature_05_Complaint_Detail_Inspection/Feature_Demo.mp4
+     Screenshots:     Feature_05_Complaint_Detail_Inspection/Screenshots/ (3 files: 01_Initial_Screen.png, 02_Interaction_DataEntry.png, 03_Final_Result.png)
+     Description:     Detailed individual case view displaying full complainant allegations, institutional responses, investigating officer assignment, historical progression milestones, and cross-bureau overlap alert banners.
+     Voiceover Text:  "The Complaint Detail view provides full transparency into individual grievance files. Regulatory officers examine the complete case dossier, including complainant allegations, institutional responses, investigating officer attributions, and historical progression milestones. Integrated overlap alerts notify officials if duplicate proceedings are already underway in sister bureaus."
+
+[06] Feature_06_Institutions_Directory
+     Feature Name:    Accredited Institutions Directory & Compliance Profiles
+     Live Route:      https://sih-264.vercel.app/institutions
+     Authorized Roles:All Official Users
+     Demo Video:      Feature_06_Institutions_Directory/Feature_Demo.mp4
+     Screenshots:     Feature_06_Institutions_Directory/Screenshots/ (3 files: 01_Initial_Screen.png, 02_Interaction_DataEntry.png, 03_Final_Result.png)
+     Description:     Master directory indexing 50+ technical institutions nationwide using unique Permanent AICTE Identifiers. Enables filtering by Region and Discipline, toggling institutions with active overlaps, and reviewing NAAC accreditation status alongside active grievance counts.
+     Voiceover Text:  "The Accredited Institutions Directory indexes technical colleges nationwide using unique AICTE Permanent Identifiers. Officials query institutional profiles, inspect historical NAAC accreditation status, and review active grievance counts. Cross-bureau conflict flags highlight institutions facing simultaneous inquiries across multiple departments, facilitating coordinated regulatory compliance."
+
+[07] Feature_07_AI_Assisted_Overlap_Detection
+     Feature Name:    AI-Assisted Overlap Detection & Multi-Signal Evidence Engine
+     Live Route:      https://sih-264.vercel.app/overlaps
+     Authorized Roles:Bureau Heads, Overlap Triage Officers
+     Demo Video:      Feature_07_AI_Assisted_Overlap_Detection/Feature_Demo.mp4
+     Screenshots:     Feature_07_AI_Assisted_Overlap_Detection/Screenshots/ (3 files: 01_Initial_Screen.png, 02_Interaction_DataEntry.png, 03_Final_Result.png)
+     Description:     Explainable multi-signal AI collision engine managing 63+ detected parallel cases. Features 'How Overlap Detection Works' explainability guide, 'Benchmark Accuracy' NLP statistics, batch overlap scanning, and transparent evidence cards showing permanent ID match, narrative similarity, and timeline proximity.
+     Voiceover Text:  "Sanyojika's explainable multi-signal AI engine continuously scans incoming complaints to detect cross-bureau duplicates and parallel proceedings. By synthesizing permanent institutional identifiers, semantic text similarity, and filing timeline proximity, the system computes high-precision overlap confidence scores. Transparent evidence signals inform officers exactly why two complaints are related, preventing duplicate investigations."
+
+[08] Feature_08_Side_by_Side_Case_Comparison
+     Feature Name:    Side-by-Side Forensic Case Comparison
+     Live Route:      https://sih-264.vercel.app/overlaps (Side-by-Side Comparison View)
+     Authorized Roles:Authorized Reviewing Officers
+     Demo Video:      Feature_08_Side_by_Side_Case_Comparison/Feature_Demo.mp4
+     Screenshots:     Feature_08_Side_by_Side_Case_Comparison/Screenshots/ (3 files: 01_Initial_Screen.png, 02_Interaction_DataEntry.png, 03_Final_Result.png)
+     Description:     Dual-column forensic comparative interface contrasting Complaint A (e.g. PGRC Bureau) and Complaint B (e.g. Regulation Bureau) side-by-side. Officers review verbatim claims, incident dates, and documentary evidence with human-in-the-loop 'Confirm Overlap' and 'Dismiss (Distinct)' controls.
+     Voiceover Text:  "The Side-by-Side Case Comparison tool provides a forensic side-by-side evaluation of overlapping files. Authorized officers compare allegations from separate bureaus in parallel, reviewing verbatim claims, incident dates, and documentary submissions. This human-in-the-loop verification empowers officials to either confirm joint jurisdiction or dismiss distinct cases with confidence."
+
+[09] Feature_09_Cross_Bureau_Case_Coordination
+     Feature Name:    Cross-Bureau Case Coordination & Joint Directives
+     Live Route:      https://sih-264.vercel.app/coordination
+     Authorized Roles:Lead Bureau Heads, Central Secretariat
+     Demo Video:      Feature_09_Cross_Bureau_Case_Coordination/Feature_Demo.mp4
+     Screenshots:     Feature_09_Cross_Bureau_Case_Coordination/Screenshots/ (3 files: 01_Initial_Screen.png, 02_Interaction_DataEntry.png, 03_Final_Result.png)
+     Description:     Inter-bureau collaboration workspace managing shared mandates. Leadership designates Lead Bureaus, issues Harmonized Joint Directives (e.g. Joint Inquiry Committees, audited account submissions), and appends official coordination minutes with unified compliance deadlines.
+     Voiceover Text:  "The Cross-Bureau Case Coordination workspace eliminates departmental silos by establishing shared inter-bureau mandates. When overlaps are confirmed, leadership designates a lead bureau, appoints joint investigating officers, and issues harmonized directives. The Append Action workflow logs joint hearings and unified compliance orders, ensuring all bureaus work toward synchronized resolution."
+
+[10] Feature_10_Case_Relationship_Intelligence_Graph
+     Feature Name:    Case Relationship Intelligence Graph & Network Topology
+     Live Route:      https://sih-264.vercel.app/network
+     Authorized Roles:Central Administrators, Intelligence Analysts
+     Demo Video:      Feature_10_Case_Relationship_Intelligence_Graph/Feature_Demo.mp4
+     Screenshots:     Feature_10_Case_Relationship_Intelligence_Graph/Screenshots/ (3 files: 01_Initial_Screen.png, 02_Interaction_DataEntry.png, 03_Final_Result.png)
+     Description:     Interactive force-directed graph canvas mapping interconnected relationships between Technical Institutions (Hubs), AICTE Bureaus, Active Complaints, and Overlap Collision Bridges. Features college/case node filtering, toggle to isolate overlap bridges, zoom controls, and canvas dragging.
+     Voiceover Text:  "The Case Relationship Intelligence Graph applies network graph theory to regulatory oversight. The interactive canvas maps complex webs connecting technical institutions, operational bureaus, and individual complaints. Filtering for overlap bridges exposes systemic institutional non-compliance and multi-bureau collision points at a single glance, providing unparalleled visual intelligence for leadership."
+
+[11] Feature_11_Reports_and_Executive_Analytics
+     Feature Name:    Executive Reports & Statistical Governance Analytics
+     Live Route:      https://sih-264.vercel.app/reports
+     Authorized Roles:AICTE Directorate, Regional Directors, Bureau Heads
+     Demo Video:      Feature_11_Reports_and_Executive_Analytics/Feature_Demo.mp4
+     Screenshots:     Feature_11_Reports_and_Executive_Analytics/Screenshots/ (3 files: 01_Initial_Screen.png, 02_Interaction_DataEntry.png, 03_Final_Result.png)
+     Description:     Executive analytics dashboard featuring Regional Grievance Distribution breakdown, Quarterly Intake vs Disposal trajectories, Departmental Workload & Disposal Efficiency tables across all bureaus, and CSV data export / print preview.
+     Voiceover Text:  "The Reports and Analytics module delivers comprehensive statistical governance intelligence for AICTE executives. Decision-makers analyze regional grievance densities, quarterly disposal trajectories, and bureau-level turnaround efficiency. Comprehensive data tables and one-click CSV export options support strategic policy formulation and administrative accountability."
+
+[12] Feature_12_Audit_History_Ledger
+     Feature Name:    Cryptographic Audit History Ledger & Official Accountability
+     Live Route:      https://sih-264.vercel.app/audit-logs
+     Authorized Roles:Vigilance Officers, System Administrators, Chief Auditor
+     Demo Video:      Feature_12_Audit_History_Ledger/Feature_Demo.mp4
+     Screenshots:     Feature_12_Audit_History_Ledger/Screenshots/ (3 files: 01_Initial_Screen.png, 02_Interaction_DataEntry.png, 03_Final_Result.png)
+     Description:     Immutable administrative audit trail recording 32+ official actions with actor names, roles, exact timestamps, client IP addresses, target case IDs, and detailed event payloads. Includes officer name search, action type filtering, and role filtering.
+     Voiceover Text:  "The Audit History Ledger enforces complete transparency through an immutable administrative audit trail. Every officer login, case status transition, overlap confirmation, and joint directive is cryptographically recorded with actor identity, client IP address, and timestamp. This tamper-evident log guarantees legal provenance, audit compliance, and ethical governance across the Sanyojika platform."

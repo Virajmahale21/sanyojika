@@ -1,0 +1,56 @@
+# AICTE Sanyojika - GraphQL Unified Schema Definition
+# Supports Federated Queries Across Central Gateway and Regional Microservices
+
+enum GrievanceStatus {
+  PENDING
+  UNDER_SCRUTINY
+  JOINT_INVESTIGATION
+  RESOLVED
+  DISMISSED
+}
+
+enum BureauType {
+  PGRC
+  REGIONAL_BUREAU
+  APPROVAL_BUREAU
+  CENTRAL_VIGILANCE
+}
+
+type Institution {
+  pid: ID!
+  name: String!
+  region: String!
+  state: String!
+  activeGrievanceCount: Int!
+  complianceScore: Float!
+  riskTier: String!
+}
+
+type Grievance {
+  id: ID!
+  institutionId: ID!
+  institution: Institution!
+  bureau: BureauType!
+  status: GrievanceStatus!
+  category: String!
+  narrative: String!
+  createdAt: String!
+  slaRemainingDays: Float!
+  overlapCount: Int!
+}
+
+type OverlapCollision {
+  id: ID!
+  sourceCaseId: ID!
+  collidingCaseId: ID!
+  similarityScore: Float!
+  matchedKeywords: [String!]!
+  institutionPid: String!
+}
+
+type Query {
+  grievances(status: GrievanceStatus, bureau: BureauType, limit: Int): [Grievance!]!
+  grievance(id: ID!): Grievance
+  institutions(region: String, minRiskScore: Float): [Institution!]!
+  activeOverlaps: [OverlapCollision!]!
+}

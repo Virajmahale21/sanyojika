@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sanyojika-ai-engine
+  labels:
+    app: sanyojika-ai
+    tier: intelligence
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sanyojika-ai
+  template:
+    metadata:
+      labels:
+        app: sanyojika-ai
+    spec:
+      containers:
+        - name: ai-inference
+          image: ghcr.io/virajmahale21/sanyojika-ai:2.5.0
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "1000m"
+              memory: "1Gi"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 30
